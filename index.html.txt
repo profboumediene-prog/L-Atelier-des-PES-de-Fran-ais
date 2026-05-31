@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'Atelier des PES de Français - Niveau 3AS</title>
+    <!-- Le script de sécurité Netlify pour te connecter -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <style>
+        :root {
+            --bleu-hist: #1a3673;
+            --vert-debat: #0fa968;
+            --orange-appel: #d97706;
+            --violet-fant: #8b5cf6;
+            --fond: #f8fafc;
+            --texte: #1e293b;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: var(--fond);
+            color: var(--texte);
+        }
+        header {
+            background-color: #041434;
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo-text h1 { margin: 0; font-size: 1.2rem; }
+        .logo-text p { margin: 0; font-size: 0.8rem; color: #94a3b8; }
+        .hero {
+            background: linear-gradient(135deg, #1e3a8a, #0f172a);
+            color: white;
+            text-align: center;
+            padding: 4rem 1rem;
+        }
+        .hero h2 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .projects-section {
+            max-width: 1200px;
+            margin: -3rem auto 0;
+            padding: 2rem;
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            width: 280px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+        .card:hover { transform: translateY(-5px); }
+        .card-header { padding: 2rem 1.5rem; color: white; }
+        .card-header h3 { margin: 0 0 0.5rem 0; font-size: 1.4rem; }
+        .card-header p { margin: 0; font-size: 0.9rem; opacity: 0.9; }
+        .p1 { background-color: var(--bleu-hist); }
+        .p2 { background-color: var(--vert-debat); }
+        .p3 { background-color: var(--orange-appel); }
+        .p4 { background-color: var(--violet-fant); }
+        .card-body { padding: 1.5rem; font-size: 0.9rem; color: #475569; }
+        .btn-explorer { color: var(--vert-debat); text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-text">
+            <h1>L'Atelier des PES de Français</h1>
+            <p>Ressources pédagogiques - Niveau 3AS</p>
+        </div>
+        <nav>Accueil &nbsp; | &nbsp; Filtrer</nav>
+    </header>
+
+    <section class="hero">
+        <h2>L'Atelier des PES de Français</h2>
+        <p>Ressources pédagogiques structurées par projet et par compétence pour les enseignants de français en Algérie.</p>
+    </section>
+
+    <main class="projects-section">
+        <!-- Projet 1 -->
+        <article class="card">
+            <div class="card-header p1">
+                <h3>Projet 01</h3>
+                <p>Textes et documents d'histoire</p>
+            </div>
+            <div class="card-body">
+                <p>Explorer les textes historiques, analyser les documents d'archives et comprendre les enjeux de la mémoire collective.</p>
+                <a href="#" class="btn-explorer">Voir les séquences →</a>
+            </div>
+        </article>
+
+        <!-- Projet 2 -->
+        <article class="card">
+            <div class="card-header p2">
+                <h3>Projet 02</h3>
+                <p>Le débat d'idées</p>
+            </div>
+            <div class="card-body">
+                <p>Maîtriser les techniques argumentatives, développer l'esprit critique et structurer un discours persuasif.</p>
+                <a href="#" class="btn-explorer">Voir les séquences →</a>
+            </div>
+        </article>
+
+        <!-- Projet 3 -->
+        <article class="card">
+            <div class="card-header p3">
+                <h3>Projet 03</h3>
+                <p>L'appel</p>
+            </div>
+            <div class="card-body">
+                <p>Comprendre et produire des textes exhortatifs pour inciter à l'action.</p>
+                <a href="#" class="btn-explorer">Voir les séquences →</a>
+            </div>
+        </article>
+
+        <!-- Projet 4 -->
+        <article class="card">
+            <div class="card-header p4">
+                <h3>Projet 04</h3>
+                <p>La nouvelle fantastique</p>
+            </div>
+            <div class="card-body">
+                <p>Découvrir les caractéristiques du fantastique et produire une nouvelle originale.</p>
+                <a href="#" class="btn-explorer">Voir les séquences →</a>
+            </div>
+        </article>
+    </main>
+
+    <!-- Script de redirection automatique après connexion -->
+    <script>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", user => {
+          if (!user) {
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/admin/";
+            });
+          }
+        });
+      }
+    </script>
+</body>
+</html>
