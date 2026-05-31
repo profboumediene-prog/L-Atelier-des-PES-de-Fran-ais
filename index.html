@@ -3,624 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cahier d'activités - Personnalisable</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    
-    <!-- Bibliothèques pour l'exportation PDF et Image -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-
+    <title>L'Atelier des PES de Français - Niveau 3AS</title>
+    <!-- Le script de sécurité Netlify pour te connecter -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <style>
-        /* Polices */
-        @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;1,400&family=Open+Sans:wght@400;600;700&display=swap');
-
+        :root {
+            --bleu-hist: #1a3673;
+            --vert-debat: #0fa968;
+            --orange-appel: #d97706;
+            --violet-fant: #8b5cf6;
+            --fond: #f8fafc;
+            --texte: #1e293b;
+        }
         body {
-            font-family: 'Open Sans', sans-serif;
-            background-color: #f3f4f6;
-            color: #333;
-            font-size: 0.9rem; /* Réduction de la taille de police globale */
-        }
-
-        h1, h2, h3, h4, .nunito {
-            font-family: 'Nunito', sans-serif;
-        }
-
-        /* Indicateur de zone éditable */
-        [contenteditable="true"] {
-            outline: none;
-            transition: background-color 0.2s, box-shadow 0.2s;
-            border-radius: 2px;
-        }
-        
-        [contenteditable="true"]:hover {
-            background-color: rgba(255, 255, 0, 0.1);
-            box-shadow: 0 0 0 2px rgba(255, 204, 0, 0.5);
-            cursor: text;
-        }
-        
-        [contenteditable="true"]:focus {
-            background-color: rgba(255, 255, 0, 0.2);
-            box-shadow: 0 0 0 2px #0066cc;
-        }
-
-        /* Effet "Page" */
-        .page-container {
-            background-color: white;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            max-width: 1000px;
-            margin: 1rem auto; /* Marge réduite */
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        /* Couleurs du thème */
-        .theme-blue { color: #0066cc; }
-        .bg-theme-blue { background-color: #0066cc; }
-        .border-theme-blue { border-color: #0066cc; }
-        
-        .theme-orange { color: #e65c00; }
-        .bg-theme-orange { background-color: #e65c00; }
-        .border-theme-orange { border-color: #e65c00; }
-
-        /* Champs apprenant */
-        .input-line {
-            border: none;
-            border-bottom: 2px dotted #999;
-            background: transparent;
-            outline: none;
-            padding: 1px 3px; /* Padding réduit */
-            font-family: 'Open Sans', sans-serif;
-            color: #0066cc;
-            font-weight: 600;
-        }
-        .input-line:focus {
-            border-bottom: 2px solid #0066cc;
-        }
-
-        /* Checkboxes apprenant */
-        .custom-checkbox {
-            appearance: none;
-            background-color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
-            font: inherit;
-            color: currentColor;
-            width: 1em; /* Taille réduite */
-            height: 1em; /* Taille réduite */
-            border: 2px solid #666;
-            border-radius: 0.15em;
-            display: grid;
-            place-content: center;
-            cursor: pointer;
+            background-color: var(--fond);
+            color: var(--texte);
         }
-        .custom-checkbox::before {
-            content: "";
-            width: 0.55em; /* Taille réduite */
-            height: 0.55em; /* Taille réduite */
-            transform: scale(0);
-            transition: 120ms transform ease-in-out;
-            box-shadow: inset 1em 1em #0066cc;
-            background-color: transform-origin;
-            clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
-        }
-        .custom-checkbox:checked::before {
-            transform: scale(1);
-        }
-        
-        .plan-header {
-            background-color: #e5f0fa;
-            border-bottom: 2px solid #0066cc;
-        }
-        
-        /* Bannière d'outils */
-        .toolbar {
-            background-color: #fff3cd;
-            color: #856404;
-            padding: 8px 12px; /* Padding réduit */
-            border-bottom: 1px solid #ffeeba;
-            position: sticky;
-            top: 0;
-            z-index: 100;
+        header {
+            background-color: #041434;
+            color: white;
+            padding: 1rem 2rem;
             display: flex;
-            flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
-            gap: 8px;
         }
+        .logo-text h1 { margin: 0; font-size: 1.2rem; }
+        .logo-text p { margin: 0; font-size: 0.8rem; color: #94a3b8; }
+        .hero {
+            background: linear-gradient(135deg, #1e3a8a, #0f172a);
+            color: white;
+            text-align: center;
+            padding: 4rem 1rem;
+        }
+        .hero h2 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .projects-section {
+            max-width: 1200px;
+            margin: -3rem auto 0;
+            padding: 2rem;
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            width: 280px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+        .card:hover { transform: translateY(-5px); }
+        .card-header { padding: 2rem 1.5rem; color: white; }
+        .card-header h3 { margin: 0 0 0.5rem 0; font-size: 1.4rem; }
+        .card-header p { margin: 0; font-size: 0.9rem; opacity: 0.9; }
+        .p1 { background-color: var(--bleu-hist); }
+        .p2 { background-color: var(--vert-debat); }
+        .p3 { background-color: var(--orange-appel); }
+        .p4 { background-color: var(--violet-fant); }
+        .card-body { padding: 1.5rem; font-size: 0.9rem; color: #475569; }
+        .btn-explorer { color: var(--vert-debat); text-decoration: none; font-weight: bold; }
     </style>
 </head>
-<body class="p-2 md:p-4 relative"> <!-- Padding global réduit -->
+<body>
 
-    <!-- BARRE D'OUTILS -->
-    <div class="toolbar rounded shadow-sm mb-2 max-w-[1000px] mx-auto"> <!-- Marge inférieure réduite -->
-        <div class="flex items-center text-xs md:text-sm font-bold">
-            <i class="fas fa-magic mr-2 text-theme-orange"></i> Mode Édition
+    <header>
+        <div class="logo-text">
+            <h1>L'Atelier des PES de Français</h1>
+            <p>Ressources pédagogiques - Niveau 3AS</p>
         </div>
-        <div class="flex gap-2 flex-wrap">
-            <button onclick="undoEdit()" class="bg-gray-700 text-white px-2 py-1 rounded text-xs hover:bg-gray-800 transition shadow" title="Annuler la dernière modification">
-                <i class="fas fa-undo mr-1"></i> Retour
-            </button>
-            <span class="border-l border-gray-400 mx-1"></span>
-            <button onclick="downloadPDF()" class="bg-red-600 text-white px-2 py-1 rounded text-xs hover:bg-red-700 transition shadow" title="Télécharger en PDF">
-                <i class="fas fa-file-pdf mr-1"></i> PDF
-            </button>
-            <button onclick="downloadImage()" class="bg-green-600 text-white px-2 py-1 rounded text-xs hover:bg-green-700 transition shadow" title="Télécharger comme Image (PNG)">
-                <i class="fas fa-image mr-1"></i> Image
-            </button>
-            <button onclick="downloadWord()" class="bg-blue-600 text-white px-2 py-1 rounded text-xs hover:bg-blue-700 transition shadow" title="Télécharger au format Word (Texte brut)">
-                <i class="fas fa-file-word mr-1"></i> Word
-            </button>
-        </div>
-    </div>
+        <nav>Accueil &nbsp; | &nbsp; Filtrer</nav>
+    </header>
 
-    <!-- DOCUMENT À EXPORTER -->
-    <div class="page-container p-0" id="fiche-content">
-        
-        <!-- EN-TÊTE DE LA FICHE -->
-        <header class="bg-theme-blue text-white p-4 relative"> <!-- Padding réduit -->
-            <div class="absolute top-2 left-2 bg-white text-black font-bold px-2 py-0.5 rounded shadow-sm flex items-center gap-1"> <!-- Padding et position ajustés -->
-                <span contenteditable="true" spellcheck="false" class="text-base tracking-widest"><span class="text-red-600">d</span><span class="text-blue-600">i</span><span class="text-yellow-500">d</span><span class="text-green-600">i</span><span class="text-purple-600">e</span><span class="text-blue-400">r</span></span> <!-- Texte réduit -->
-                <span contenteditable="true" spellcheck="false" class="text-[0.65rem] ml-1 text-gray-500 block -mt-1">Édition</span> <!-- Texte réduit -->
+    <section class="hero">
+        <h2>L'Atelier des PES de Français</h2>
+        <p>Ressources pédagogiques structurées par projet et par compétence pour les enseignants de français en Algérie.</p>
+    </section>
+
+    <main class="projects-section">
+        <!-- Projet 1 -->
+        <article class="card">
+            <div class="card-header p1">
+                <h3>Projet 01</h3>
+                <p>Textes et documents d'histoire</p>
             </div>
-            
-            <div class="text-center mt-3"> <!-- Marge supérieure réduite -->
-                <h1 contenteditable="true" spellcheck="false" class="text-lg md:text-xl font-bold uppercase tracking-wider outline-none">Dossier 1 • Expliquer un phénomène naturel</h1> <!-- Texte réduit -->
-                <h2 contenteditable="true" spellcheck="false" class="text-sm md:text-base mt-1 bg-theme-orange inline-block px-3 py-0.5 rounded-full shadow-md outline-none">Séquence 1 • La vulgarisation scientifique</h2> <!-- Texte réduit, margin et padding réduits -->
+            <div class="card-body">
+                <p>Explorer les textes historiques, analyser les documents d'archives et comprendre les enjeux de la mémoire collective.</p>
+                <a href="#" class="btn-explorer">Voir les séquences →</a>
             </div>
-        </header>
+        </article>
 
-        <!-- ZONE D'IDENTIFICATION -->
-        <div class="p-3 border-b-2 border-gray-200 bg-gray-50 flex flex-wrap gap-4 justify-between items-end text-sm"> <!-- Padding, gap et texte réduits -->
-            <div class="flex-grow">
-                <label contenteditable="true" spellcheck="false" class="font-bold text-gray-700">Nom :</label>
-                <input type="text" class="input-line w-full max-w-[200px]" placeholder="..."> <!-- Largeur max réduite -->
+        <!-- Projet 2 -->
+        <article class="card">
+            <div class="card-header p2">
+                <h3>Projet 02</h3>
+                <p>Le débat d'idées</p>
             </div>
-            <div class="flex-grow">
-                <label contenteditable="true" spellcheck="false" class="font-bold text-gray-700">Prénom :</label>
-                <input type="text" class="input-line w-full max-w-[200px]" placeholder="..."> <!-- Largeur max réduite -->
+            <div class="card-body">
+                <p>Maîtriser les techniques argumentatives, développer l'esprit critique et structurer un discours persuasif.</p>
+                <a href="#" class="btn-explorer">Voir les séquences →</a>
             </div>
-            <div>
-                <label contenteditable="true" spellcheck="false" class="font-bold text-gray-700">Classe : 1ère AS /</label>
-                <input type="text" class="input-line w-12 text-center" placeholder="..."> <!-- Largeur réduite -->
+        </article>
+
+        <!-- Projet 3 -->
+        <article class="card">
+            <div class="card-header p3">
+                <h3>Projet 03</h3>
+                <p>L'appel</p>
             </div>
-        </div>
-
-        <div class="p-4 md:p-6 space-y-6"> <!-- Padding et espacement vertical réduits -->
-
-            <!-- ÉTAPE 1 -->
-            <section>
-                <div class="flex items-center gap-2 mb-2"> <!-- Gap et margin réduits -->
-                    <div class="bg-theme-blue text-white rounded-full w-7 h-7 flex flex-shrink-0 items-center justify-center text-sm shadow-md"> <!-- Taille icône réduite -->
-                        <i class="fas fa-search"></i>
-                    </div>
-                    <h3 contenteditable="true" spellcheck="false" class="text-lg font-bold text-theme-blue border-b-2 border-theme-blue pb-0.5 flex-grow">ÉTAPE 1 • Lecture & Stratégies de compréhension</h3> <!-- Texte réduit -->
-                </div>
-                <p contenteditable="true" spellcheck="false" class="text-gray-600 italic mb-3 ml-10 text-xs">Objectif : Lire pour dégager l'information sous forme de plan.</p> <!-- Marge, taille texte réduits -->
-
-                <div class="ml-2 md:ml-10 space-y-4"> <!-- Marges et espacements réduits -->
-                    <div class="bg-gray-50 p-3 rounded-lg border border-gray-200 text-sm"> <!-- Padding et taille texte réduits -->
-                        <p class="font-bold mb-2"><span class="bg-theme-blue text-white w-5 h-5 inline-flex justify-center items-center rounded-full mr-1 text-xs">1</span> <span contenteditable="true" spellcheck="false">Avant la lecture.</span> <span contenteditable="true" spellcheck="false" class="font-normal text-gray-700">Observez les éléments périphériques du texte ci-dessous et cochez la bonne proposition :</span></p>
-                        
-                        <div class="ml-6 grid md:grid-cols-2 gap-2"> <!-- Marges et espacements réduits -->
-                            <div>
-                                <p contenteditable="true" spellcheck="false" class="font-semibold text-xs mb-1 text-gray-600 uppercase">Le titre est une phrase :</p>
-                                <label class="flex items-center gap-1 mb-0.5 cursor-pointer hover:bg-gray-100 p-0.5 rounded text-xs">
-                                    <input type="checkbox" class="custom-checkbox"> <span contenteditable="true" spellcheck="false">déclarative (donne une information).</span>
-                                </label>
-                                <label class="flex items-center gap-1 cursor-pointer hover:bg-gray-100 p-0.5 rounded text-xs">
-                                    <input type="checkbox" class="custom-checkbox"> <span contenteditable="true" spellcheck="false">interrogative (pose une question).</span>
-                                </label>
-                            </div>
-                            <div>
-                                <p contenteditable="true" spellcheck="false" class="font-semibold text-xs mb-1 text-gray-600 uppercase">Le texte comporte :</p>
-                                <label class="flex items-center gap-1 mb-0.5 cursor-pointer hover:bg-gray-100 p-0.5 rounded text-xs">
-                                    <input type="checkbox" class="custom-checkbox"> <span contenteditable="true" spellcheck="false">des dialogues et des personnages.</span>
-                                </label>
-                                <label class="flex items-center gap-1 cursor-pointer hover:bg-gray-100 p-0.5 rounded text-xs">
-                                    <input type="checkbox" class="custom-checkbox"> <span contenteditable="true" spellcheck="false">des données chiffrées et des paragraphes.</span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- TEXTE SUPPORT MODIFIABLE -->
-                    <div class="relative bg-white border-l-4 border-theme-blue p-4 shadow-md rounded-r-lg my-4 text-sm"> <!-- Padding et marges réduits -->
-                        <div contenteditable="true" spellcheck="false" class="absolute -top-3 -left-8 bg-theme-blue text-white px-2 py-0.5 rounded text-xs font-bold shadow flex items-center gap-1"> <!-- Position, padding, taille texte réduits -->
-                            <i class="fas fa-file-alt"></i> Le texte d'étude
-                        </div>
-                        <h4 contenteditable="true" spellcheck="false" class="text-base font-bold text-center mb-2 text-theme-blue">Pourquoi la Terre est-elle bleue vue de l’espace ?</h4> <!-- Taille texte et marge réduits -->
-                        <div contenteditable="true" spellcheck="false" class="space-y-2 text-gray-800 leading-snug text-justify"> <!-- Espacement et hauteur de ligne réduits -->
-                            <p>Depuis l’espace, notre planète ressemble à une magnifique bille de couleur azur. C’est pour cette raison qu’on l’appelle communément « la planète bleue ». Mais comment explique-t-on cette couleur ?</p>
-                            <p>D’abord, la Terre est bleue parce que l’eau occupe une place immense à sa surface. En effet, les océans et les mers forment une gigantesque nappe liquide qui couvre environ <strong>70%</strong> du globe terrestre.</p>
-                            <p>Ensuite, la lumière du Soleil joue un rôle essentiel. Quand les rayons solaires traversent l’atmosphère, les molécules d'air et les gouttes d'eau retiennent les couleurs comme le rouge ou le jaune, mais elles laissent passer la couleur bleue. C'est cette lumière particulière qui se reflète vers les yeux des astronautes.</p>
-                            <p>En somme, la couleur bleue de notre planète n’est pas un hasard : elle est le résultat combiné de l'abondance de l'eau et de la diffusion de la lumière solaire.</p>
-                        </div>
-                    </div>
-
-                    <div class="text-sm"> <!-- Taille texte global réduite -->
-                        <p class="font-bold mb-2"><span class="bg-theme-blue text-white w-5 h-5 inline-flex justify-center items-center rounded-full mr-1 text-xs">2</span> <span contenteditable="true" spellcheck="false">Lecture analytique.</span> <span contenteditable="true" spellcheck="false" class="font-normal text-gray-700">Parcourez le texte et complétez l'architecture de l'explication (le plan du texte) :</span></p>
-                        
-                        <div class="border-2 border-theme-blue rounded-lg overflow-hidden shadow-sm">
-                            <div contenteditable="true" spellcheck="false" class="plan-header text-center py-1 font-bold text-theme-blue tracking-wide text-xs"> <!-- Padding et taille texte réduits -->
-                                LE PLAN DE L'EXPLICATION
-                            </div>
-                            
-                            <div class="p-2 border-b border-gray-200"> <!-- Padding réduit -->
-                                <h5 class="font-bold text-gray-800 mb-1 text-xs"><span contenteditable="true" spellcheck="false">1. PHASE DE QUESTIONNEMENT</span> <span contenteditable="true" spellcheck="false" class="font-normal text-gray-500">(Paragraphe 1)</span></h5>
-                                <ul class="list-disc pl-4 space-y-1 text-gray-700 text-xs"> <!-- Padding, espacement, taille texte réduits -->
-                                    <li class="flex items-center gap-1"><span contenteditable="true" spellcheck="false">Constat visuel : La Terre a une couleur</span> <input type="text" class="input-line w-32">.</li>
-                                    <li class="flex items-center gap-1"><span contenteditable="true" spellcheck="false">Question de l'auteur :</span> <input type="text" class="input-line w-48" placeholder="..."> ?</li>
-                                </ul>
-                            </div>
-                            
-                            <div class="p-2 border-b border-gray-200 bg-gray-50"> <!-- Padding réduit -->
-                                <h5 class="font-bold text-gray-800 mb-1 text-xs"><span contenteditable="true" spellcheck="false">2. PHASE EXPLICATIVE : LES CAUSES</span> <span contenteditable="true" spellcheck="false" class="font-normal text-gray-500">(Paragraphes 2 & 3)</span></h5>
-                                <ul class="list-disc pl-4 space-y-1 text-gray-700 text-xs"> <!-- Padding, espacement, taille texte réduits -->
-                                    <li class="flex items-center gap-1"><span contenteditable="true" spellcheck="false">Cause 1 : L'immensité de l'eau qui couvre</span> <input type="text" class="input-line w-12 text-center"> <span contenteditable="true" spellcheck="false">% du globe.</span></li>
-                                    <li class="flex items-center gap-1"><span contenteditable="true" spellcheck="false">Cause 2 : Le filtrage de la lumière par</span> <input type="text" class="input-line flex-grow">.</li>
-                                </ul>
-                            </div>
-                            
-                            <div class="p-2"> <!-- Padding réduit -->
-                                <h5 class="font-bold text-gray-800 mb-1 text-xs"><span contenteditable="true" spellcheck="false">3. PHASE DE CONCLUSION</span> <span contenteditable="true" spellcheck="false" class="font-normal text-gray-500">(Paragraphe 4)</span></h5>
-                                <ul class="list-disc pl-4 space-y-1 text-gray-700 text-xs"> <!-- Padding, espacement, taille texte réduits -->
-                                    <li class="flex items-center gap-1 flex-wrap"><span contenteditable="true" spellcheck="false">Synthèse : La couleur bleue dépend de l'</span><input type="text" class="input-line w-24"> <span contenteditable="true" spellcheck="false">et du</span> <input type="text" class="input-line w-24">.</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- ÉTAPE 2 -->
-            <section>
-                <div class="flex items-center gap-2 mb-2"> <!-- Gap et margin réduits -->
-                    <div class="bg-theme-blue text-white rounded-full w-7 h-7 flex flex-shrink-0 items-center justify-center text-sm shadow-md"> <!-- Taille icône réduite -->
-                        <i class="fas fa-tools"></i>
-                    </div>
-                    <h3 contenteditable="true" spellcheck="false" class="text-lg font-bold text-theme-blue border-b-2 border-theme-blue pb-0.5 flex-grow">ÉTAPE 2 • Faits de langue & Fonctionnalité</h3> <!-- Texte réduit -->
-                </div>
-                <p contenteditable="true" spellcheck="false" class="text-gray-600 italic mb-4 ml-10 text-xs">Objectif : Étudier les outils linguistiques investis dans le discours.</p> <!-- Marge, taille texte réduits -->
-
-                <div class="flex flex-col lg:flex-row gap-4 ml-2 md:ml-10 text-sm"> <!-- Marges et espacements réduits, taille texte globale réduite -->
-                    <!-- Colonne exercices -->
-                    <div class="flex-grow space-y-4"> <!-- Espacement vertical réduit -->
-                        <div>
-                            <p class="font-bold mb-2"><span class="bg-theme-blue text-white w-5 h-5 inline-flex justify-center items-center rounded-full mr-1 text-xs">1</span> <span contenteditable="true" spellcheck="false">L'expression de la cause.</span></p>
-                            <div class="ml-6 text-gray-700 space-y-2"> <!-- Marge, espacement vertical réduits -->
-                                <p contenteditable="true" spellcheck="false">Observez cet énoncé extrait du paragraphe 2 :<br>
-                                <span class="italic bg-yellow-100 px-1 rounded text-xs">« La Terre est bleue <strong>parce que</strong> l’eau occupe une place immense à sa surface. »</span></p>
-                                
-                                <p class="flex items-center gap-1 flex-wrap text-xs">
-                                    <i class="fas fa-chevron-right text-theme-orange text-[0.6rem]"></i> 
-                                    <span contenteditable="true" spellcheck="false">Quel rapport logique est introduit par l'expression en gras ?</span> 
-                                    <input type="text" class="input-line w-32">
-                                </p>
-                                
-                                <div class="bg-gray-50 p-2 rounded border border-gray-200 mt-1"> <!-- Padding et marge réduits -->
-                                    <p class="text-xs mb-1"><i class="fas fa-pen text-theme-blue mr-1"></i> <span contenteditable="true" spellcheck="false">Réécrivez l'énoncé en remplaçant <em>"parce que"</em> par le connecteur approprié (<span class="font-mono text-[0.6rem] bg-gray-200 px-0.5 rounded">donc / car / mais</span>) :</span></p>
-                                    <p class="ml-2 flex items-center flex-wrap text-xs">
-                                        <i class="fas fa-arrow-right text-gray-400 mr-1 text-[0.6rem]"></i>
-                                        <span contenteditable="true" spellcheck="false">La Terre est bleue,</span> <input type="text" class="input-line w-16 text-center mx-1"> <span contenteditable="true" spellcheck="false">l'eau occupe une place immense.</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div>
-                            <p class="font-bold mb-2"><span class="bg-theme-blue text-white w-5 h-5 inline-flex justify-center items-center rounded-full mr-1 text-xs">2</span> <span contenteditable="true" spellcheck="false">La valeur des temps.</span></p>
-                            <div class="ml-6 text-gray-700 space-y-2"> <!-- Marge, espacement vertical réduits -->
-                                <div>
-                                    <p contenteditable="true" spellcheck="false" class="mb-1 text-xs">Relevez quatre verbes conjugués dans le paragraphe 3.</p>
-                                    <div class="grid grid-cols-2 gap-2 max-w-[250px] text-xs"> <!-- Gap réduit, largeur max réduite -->
-                                        <div class="flex items-center gap-1">1. <input type="text" class="input-line w-24"></div>
-                                        <div class="flex items-center gap-1">2. <input type="text" class="input-line w-24"></div>
-                                        <div class="flex items-center gap-1">3. <input type="text" class="input-line w-24"></div>
-                                        <div class="flex items-center gap-1">4. <input type="text" class="input-line w-24"></div>
-                                    </div>
-                                </div>
-                                
-                                <p class="flex items-center gap-1 flex-wrap text-xs">
-                                    <i class="fas fa-chevron-right text-theme-orange text-[0.6rem]"></i> 
-                                    <span contenteditable="true" spellcheck="false">À quel temps de l'indicatif sont-ils employés ?</span> 
-                                    <input type="text" class="input-line w-32">
-                                </p>
-                                
-                                <div class="bg-gray-50 p-2 rounded border border-gray-200"> <!-- Padding réduit -->
-                                    <p contenteditable="true" spellcheck="false" class="font-semibold text-xs mb-1 text-gray-600">Cochez la bonne case : Ce temps exprime...</p>
-                                    <label class="flex items-center gap-1 mb-1 cursor-pointer text-xs">
-                                        <input type="checkbox" class="custom-checkbox"> <span contenteditable="true" spellcheck="false">une action en train de se dérouler.</span>
-                                    </label>
-                                    <label class="flex items-center gap-1 cursor-pointer text-xs">
-                                        <input type="checkbox" class="custom-checkbox"> <span contenteditable="true" spellcheck="false">une vérité scientifique intemporelle.</span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Colonne encadré méthode -->
-                    <div class="lg:w-1/3">
-                        <div class="bg-orange-50 border border-theme-orange rounded-lg shadow-sm sticky top-4"> <!-- Bordure réduite -->
-                            <div class="bg-theme-orange text-white p-2 flex items-center gap-1 font-bold rounded-t-sm text-xs"> <!-- Padding, texte réduits -->
-                                <i class="far fa-lightbulb"></i>
-                                <span contenteditable="true" spellcheck="false">L'ENCADRÉ MÉTHODO</span>
-                            </div>
-                            <div class="p-3 text-gray-800 text-xs"> <!-- Padding, texte réduits -->
-                                <h6 contenteditable="true" spellcheck="false" class="font-bold text-theme-orange mb-2 border-b border-orange-200 pb-0.5">La boîte à outils de l'explication</h6>
-                                <p contenteditable="true" spellcheck="false" class="mb-1.5 italic text-gray-600">Pour vulgariser un phénomène scientifique, le rédacteur utilise :</p>
-                                <ul class="space-y-1.5" contenteditable="true" spellcheck="false">
-                                    <li class="flex items-start gap-1">
-                                        <i class="fas fa-check text-green-500 mt-0.5 text-[0.6rem]"></i>
-                                        <span><strong>Le présent de vérité générale :</strong> pour énoncer des faits incontestables.</span>
-                                    </li>
-                                    <li class="flex items-start gap-1">
-                                        <i class="fas fa-check text-green-500 mt-0.5 text-[0.6rem]"></i>
-                                        <span><strong>Les connecteurs de cause</strong> (parce que, car) : pour relier le fait à son origine.</span>
-                                    </li>
-                                    <li class="flex items-start gap-1">
-                                        <i class="fas fa-check text-green-500 mt-0.5 text-[0.6rem]"></i>
-                                        <span><strong>Les articulateurs</strong> (d'abord, ensuite, en somme) : pour organiser le plan.</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="ml-2 md:ml-10 mt-4 text-sm"> <!-- Marge réduite -->
-                    <p class="font-bold mb-2"><span class="bg-theme-blue text-white w-5 h-5 inline-flex justify-center items-center rounded-full mr-1 text-xs">3</span> <span contenteditable="true" spellcheck="false">Entraînement</span> <span contenteditable="true" spellcheck="false" class="font-normal text-gray-500 text-xs">(Intégration)</span>.</p>
-                    <div class="ml-6 bg-blue-50 border border-blue-200 p-3 rounded-lg"> <!-- Marge, padding réduits -->
-                        <p contenteditable="true" spellcheck="false" class="text-gray-700 mb-2 text-xs">Reliez logiquement les deux faits scientifiques suivants pour former un énoncé explicatif cohérent. Utilisez le <strong>présent de vérité générale</strong> et le connecteur de cause de votre choix (<em>parce que / car</em>) :</p>
-                        <ul contenteditable="true" spellcheck="false" class="list-none space-y-0.5 mb-2 text-gray-600 text-xs ml-2 border-l-2 border-theme-blue pl-2 outline-none">
-                            <li><strong>Fait A :</strong> Les plantes vertes grandissent et s'épanouissent.</li>
-                            <li><strong>Fait B :</strong> Elles fabriquent leur nourriture grâce à la lumière du Soleil.</li>
-                        </ul>
-                        <div class="flex items-start gap-1">
-                            <i class="fas fa-pen-nib text-theme-blue mt-0.5 text-[0.6rem]"></i>
-                            <textarea class="w-full bg-transparent border-b border-dashed border-gray-400 focus:border-theme-blue outline-none resize-none font-semibold text-theme-blue p-0.5 leading-snug text-xs" rows="1" placeholder="Écrivez votre phrase ici..."></textarea> <!-- Bordure, padding, texte, lignes réduits -->
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- ÉTAPE 3 -->
-            <section>
-                <div class="flex items-center gap-2 mb-2"> <!-- Gap, margin réduits -->
-                    <div class="bg-theme-blue text-white rounded-full w-7 h-7 flex flex-shrink-0 items-center justify-center text-sm shadow-md">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3 contenteditable="true" spellcheck="false" class="text-lg font-bold text-theme-blue border-b-2 border-theme-blue pb-0.5 flex-grow">ÉTAPE 3 • Genre de discours & Objectivité</h3>
-                </div>
-                <p contenteditable="true" spellcheck="false" class="text-gray-600 italic mb-4 ml-10 text-xs">Objectif : Dégager les caractéristiques de la vulgarisation.</p>
-
-                <div class="ml-2 md:ml-10 space-y-4 text-sm"> <!-- Marge, espacement, texte réduits -->
-                    <div>
-                        <p class="font-bold mb-2"><span class="bg-theme-blue text-white w-5 h-5 inline-flex justify-center items-center rounded-full mr-1 text-xs">1</span> <span contenteditable="true" spellcheck="false">Les procédés explicatifs.</span></p>
-                        <p contenteditable="true" spellcheck="false" class="ml-6 text-gray-700 mb-2 text-xs">Associez chaque extrait du texte à la technique d'explication qu'il utilise en insérant la lettre correspondante :</p>
-                        
-                        <div class="ml-6 grid md:grid-cols-2 gap-4 items-center bg-gray-50 p-3 rounded border border-gray-200"> <!-- Marges, gap, padding réduits -->
-                            <div class="space-y-2">
-                                <div class="flex items-center gap-2">
-                                    <span contenteditable="true" spellcheck="false" class="font-bold text-theme-blue text-xs">A.</span>
-                                    <span contenteditable="true" spellcheck="false" class="italic text-[0.7rem] bg-white border border-gray-300 p-1 rounded flex-grow">« ...ressemble à une magnifique bille »</span>
-                                </div>
-                                <div class="flex items-center gap-2">
-                                    <span contenteditable="true" spellcheck="false" class="font-bold text-theme-blue text-xs">B.</span>
-                                    <span contenteditable="true" spellcheck="false" class="italic text-[0.7rem] bg-white border border-gray-300 p-1 rounded flex-grow">« ...on l'appelle "la planète bleue" »</span>
-                                </div>
-                                <div class="flex items-center gap-2">
-                                    <span contenteditable="true" spellcheck="false" class="font-bold text-theme-blue text-xs">C.</span>
-                                    <span contenteditable="true" spellcheck="false" class="italic text-[0.7rem] bg-white border border-gray-300 p-1 rounded flex-grow">« ...environ 70% du globe terrestre »</span>
-                                </div>
-                            </div>
-                            
-                            <div class="space-y-2">
-                                <div class="flex items-center gap-2">
-                                    <input type="text" class="w-6 border border-gray-400 rounded text-center font-bold text-theme-blue uppercase focus:border-theme-blue outline-none uppercase text-xs p-0.5" maxlength="1">
-                                    <span contenteditable="true" spellcheck="false" class="font-semibold text-gray-700 text-xs">La caractérisation (chiffre précis)</span>
-                                </div>
-                                <div class="flex items-center gap-2">
-                                    <input type="text" class="w-6 border border-gray-400 rounded text-center font-bold text-theme-blue uppercase focus:border-theme-blue outline-none uppercase text-xs p-0.5" maxlength="1">
-                                    <span contenteditable="true" spellcheck="false" class="font-semibold text-gray-700 text-xs">L'illustration (comparaison)</span>
-                                </div>
-                                <div class="flex items-center gap-2">
-                                    <input type="text" class="w-6 border border-gray-400 rounded text-center font-bold text-theme-blue uppercase focus:border-theme-blue outline-none uppercase text-xs p-0.5" maxlength="1">
-                                    <span contenteditable="true" spellcheck="false" class="font-semibold text-gray-700 text-xs">La dénomination (donner un nom)</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <p class="font-bold mb-2"><span class="bg-theme-blue text-white w-5 h-5 inline-flex justify-center items-center rounded-full mr-1 text-xs">2</span> <span contenteditable="true" spellcheck="false">L'énonciation.</span></p>
-                        <div class="ml-6 text-gray-700 space-y-2 text-xs"> <!-- Marge, espacement, texte réduits -->
-                            <p class="flex flex-col gap-1">
-                                <span contenteditable="true" spellcheck="false">L'auteur emploie-t-il les pronoms <em>"Je"</em> ou <em>"Moi"</em> ? Exprime-t-il ses sentiments ?</span>
-                                <input type="text" class="input-line w-full">
-                            </p>
-                            <div class="bg-blue-50 p-2 rounded border-l-2 border-theme-blue"> <!-- Padding, bordure réduits -->
-                                <p class="flex items-center gap-1 flex-wrap">
-                                    <i class="fas fa-info-circle text-theme-blue text-[0.7rem]"></i>
-                                    <strong contenteditable="true" spellcheck="false">Conclusion :</strong> <span contenteditable="true" spellcheck="false">Le texte de vulgarisation est caractérisé par l'</span><input type="text" class="input-line w-24 text-center" placeholder="..."> <span contenteditable="true" spellcheck="false">(la neutralité) de son auteur.</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- GRILLE DE CONTRÔLE -->
-            <section class="mt-6 bg-white border border-theme-orange rounded-lg overflow-hidden shadow-sm"> <!-- Marge, bordure, ombre réduites -->
-                <div class="bg-theme-orange text-white p-2 flex items-center justify-between"> <!-- Padding réduit -->
-                    <div class="flex items-center gap-2">
-                        <i class="fas fa-flag-checkered text-lg"></i>
-                        <h3 contenteditable="true" spellcheck="false" class="text-base font-bold uppercase tracking-wide">LE CAP PRODUCTION</h3> <!-- Texte réduit -->
-                    </div>
-                    <span contenteditable="true" spellcheck="false" class="bg-white text-theme-orange px-2 py-0.5 rounded-full text-xs font-bold shadow-sm">Ma grille de contrôle</span> <!-- Padding, texte réduits -->
-                </div>
-                
-                <div class="p-4"> <!-- Padding réduit -->
-                    <p contenteditable="true" spellcheck="false" class="text-gray-600 italic mb-3 text-xs">Avant de rédiger votre propre texte explicatif (tâche finale), assurez-vous de maîtriser les critères du genre en cochant ces cases :</p> <!-- Marge, texte réduits -->
-                    
-                    <div class="space-y-2 text-gray-800 text-xs"> <!-- Espacement, texte réduits -->
-                        <label class="flex items-start gap-2 p-1.5 hover:bg-orange-50 rounded transition-colors cursor-pointer border border-transparent hover:border-orange-100">
-                            <input type="checkbox" class="custom-checkbox mt-0.5">
-                            <div>
-                                <span contenteditable="true" spellcheck="false" class="font-bold text-theme-orange uppercase text-[0.7rem] block mb-0.5">Structure</span>
-                                <span contenteditable="true" spellcheck="false" class="outline-none block">Mon plan est visible : j'ai une introduction avec une question, des paragraphes pour les causes et une conclusion.</span>
-                            </div>
-                        </label>
-                        
-                        <label class="flex items-start gap-2 p-1.5 hover:bg-orange-50 rounded transition-colors cursor-pointer border border-transparent hover:border-orange-100">
-                            <input type="checkbox" class="custom-checkbox mt-0.5">
-                            <div>
-                                <span contenteditable="true" spellcheck="false" class="font-bold text-theme-orange uppercase text-[0.7rem] block mb-0.5">Faits de langue (Outils)</span>
-                                <span contenteditable="true" spellcheck="false" class="outline-none block">Mes verbes sont au <strong>présent de vérité générale</strong> et j'utilise des <strong>connecteurs de cause</strong> (<em>parce que, car</em>).</span>
-                            </div>
-                        </label>
-                        
-                        <label class="flex items-start gap-2 p-1.5 hover:bg-orange-50 rounded transition-colors cursor-pointer border border-transparent hover:border-orange-100">
-                            <input type="checkbox" class="custom-checkbox mt-0.5">
-                            <div>
-                                <span contenteditable="true" spellcheck="false" class="font-bold text-theme-orange uppercase text-[0.7rem] block mb-0.5">Style et Objectivité</span>
-                                <span contenteditable="true" spellcheck="false" class="outline-none block">Je reste <strong>neutre</strong> (pas de "je"), et j'utilise des procédés explicatifs (chiffres, comparaisons) pour guider mon lecteur.</span>
-                            </div>
-                        </label>
-                    </div>
-                </div>
-            </section>
-
-        </div>
-        
-        <!-- PIED DE PAGE -->
-        <footer class="bg-gray-100 p-2 border-t border-gray-200 text-right text-gray-500 text-xs flex justify-between items-center"> <!-- Padding, texte réduits -->
-            <span contenteditable="true" spellcheck="false">Reproduction interdite © Éditions Didier</span>
-            <div class="flex items-center gap-1">
-                <span contenteditable="true" spellcheck="false">Signature de l'enseignant :</span>
-                <span class="inline-block w-24 border-b border-gray-400"></span> <!-- Largeur réduite -->
+            <div class="card-body">
+                <p>Comprendre et produire des textes exhortatifs pour inciter à l'action.</p>
+                <a href="#" class="btn-explorer">Voir les séquences →</a>
             </div>
-        </footer>
-    </div>
+        </article>
 
-    <!-- SCRIPTS POUR LES FONCTIONNALITÉS (RETOUR, EXPORT PDF/IMAGE/WORD) -->
+        <!-- Projet 4 -->
+        <article class="card">
+            <div class="card-header p4">
+                <h3>Projet 04</h3>
+                <p>La nouvelle fantastique</p>
+            </div>
+            <div class="card-body">
+                <p>Découvrir les caractéristiques du fantastique et produire une nouvelle originale.</p>
+                <a href="#" class="btn-explorer">Voir les séquences →</a>
+            </div>
+        </article>
+    </main>
+
+    <!-- Script de redirection automatique après connexion -->
     <script>
-        // ======= GESTION DU RETOUR (UNDO) =======
-        let historyStack = [];
-        let isUndoing = false;
-        
-        function getDocumentState() {
-            return document.getElementById('fiche-content').innerHTML;
-        }
-
-        function saveState() {
-            if (isUndoing) return;
-            const currentState = getDocumentState();
-            if (historyStack.length === 0 || historyStack[historyStack.length - 1] !== currentState) {
-                historyStack.push(currentState);
-                if (historyStack.length > 50) historyStack.shift(); // Garde les 50 dernières actions
-            }
-        }
-
-        function undoEdit() {
-            if (historyStack.length > 1) {
-                isUndoing = true;
-                historyStack.pop(); // Retire l'état actuel erroné
-                const previousState = historyStack[historyStack.length - 1];
-                document.getElementById('fiche-content').innerHTML = previousState;
-                isUndoing = false;
-            } else {
-                alert("Aucune action à annuler !");
-            }
-        }
-
-        // Pour que l'HTML reflète les valeurs (utile pour annuler et pour exporter)
-        document.addEventListener('input', function(e) {
-            if (e.target.matches('input[type="text"]')) {
-                e.target.setAttribute('value', e.target.value);
-            } else if (e.target.matches('textarea')) {
-                e.target.textContent = e.target.value;
-            }
-        });
-
-        document.addEventListener('change', function(e) {
-            if (e.target.matches('input[type="checkbox"]')) {
-                if (e.target.checked) e.target.setAttribute('checked', 'checked');
-                else e.target.removeAttribute('checked');
-            }
-        });
-
-        // Sauvegarder l'état après qu'on a fini de taper/modifier quelque chose (pour éviter de saturer la mémoire à chaque lettre)
-        document.addEventListener('focusout', function(e) {
-            if (e.target.matches('[contenteditable="true"], input, textarea')) {
-                saveState();
-            }
-        });
-
-        // État initial
-        window.addEventListener('load', saveState);
-
-        // ======= TÉLÉCHARGEMENT PDF =======
-        function downloadPDF() {
-            const element = document.getElementById('fiche-content');
-            const opt = {
-                margin:       [5, 0, 5, 0], // Marges : top, left, bottom, right
-                filename:     'Fiche_Didier_Apprenant.pdf',
-                image:        { type: 'jpeg', quality: 0.98 },
-                html2canvas:  { scale: 2, useCORS: true, logging: false },
-                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
-            };
-            html2pdf().set(opt).from(element).save();
-        }
-
-        // ======= TÉLÉCHARGEMENT IMAGE =======
-        function downloadImage() {
-            const element = document.getElementById('fiche-content');
-            html2canvas(element, { scale: 2, useCORS: true }).then(canvas => {
-                const link = document.createElement('a');
-                link.download = 'Fiche_Didier_Apprenant.png';
-                link.href = canvas.toDataURL('image/png');
-                link.click();
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", user => {
+          if (!user) {
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/admin/";
             });
-        }
-
-        // ======= TÉLÉCHARGEMENT WORD =======
-        function downloadWord() {
-            // Extraction du contenu de la fiche
-            const htmlContent = document.getElementById('fiche-content').innerHTML;
-            
-            // On reconstruit une structure HTML lisible par Microsoft Word
-            const preHtml = `<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
-            <head><meta charset='utf-8'><title>Fiche Apprenant</title>
-            <style>
-                body { font-family: sans-serif; color: #333; }
-                h1, h2, h3 { color: #0066cc; }
-                .bg-theme-blue { background-color: #0066cc; color: #fff; padding: 10px; }
-                .text-theme-orange { color: #e65c00; }
-                li { margin-bottom: 5px; }
-            </style>
-            </head><body>`;
-            const postHtml = "</body></html>";
-            
-            const html = preHtml + htmlContent + postHtml;
-            const blob = new Blob(['\ufeff', html], { type: 'application/msword' });
-            
-            // Création du lien de téléchargement
-            const url = 'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent(html);
-            const downloadLink = document.createElement("a");
-            document.body.appendChild(downloadLink);
-            
-            if (navigator.msSaveOrOpenBlob) {
-                navigator.msSaveOrOpenBlob(blob, 'Fiche_Didier_Apprenant.doc'); // Pour IE/Edge ancien
-            } else {
-                downloadLink.href = url;
-                downloadLink.download = 'Fiche_Didier_Apprenant.doc';
-                downloadLink.click();
-            }
-            document.body.removeChild(downloadLink);
-        }
+          }
+        });
+      }
     </script>
 </body>
 </html>
