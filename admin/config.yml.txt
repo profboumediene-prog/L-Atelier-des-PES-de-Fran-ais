@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: profboumediene-prog/L-Atelier-des-PES-de-Francais
+  repo: profboumediene-prog/atelier-pes
   branch: main
 
 media_folder: "images"
